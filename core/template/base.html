@@ -1,0 +1,25 @@
+{# base.html — le parent #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BudgetTrack{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <span>
+            {% if user.is_authenticated %}
+                {{user.username}}
+                 <a href="{% url 'logout' %}">Déconnexion</a>
+            {% else %}
+                 <a href="{% url 'login' %}">Connexion</a>
+            {% endif %}
+        </span>
+    </nav>
+    <main>
+         {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
