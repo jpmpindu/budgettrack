@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+{% block content %} 
+    {% for budget in budgets %}
+        {{ budget.name }} {{ budget.limit }}
+        {% for transaction in budget.transactions.all %}
+            {{ transaction.label }} — {{ transaction.amount }} €
+        {% empty %}
+            Aucune transaction.
+    {% endfor %}
+    {% empty %}
+        pas de budget
+    
+    {% endfor%}
+
+   
+{% endblock %}
+
